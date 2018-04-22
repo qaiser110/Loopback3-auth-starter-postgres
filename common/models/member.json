@@ -1,0 +1,94 @@
+{
+  "name": "Member",
+  "base": "User",
+  "idInjection": true,
+  "restrictResetPasswordTokenScope": true,
+  "emailVerificationRequired": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tid": {
+      "type": "string"
+    },
+    "is_profile_complete": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_trusted_user": {
+      "type": "boolean",
+      "default": false
+    },
+    "profile_token": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AccessToken",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [{
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "DENY"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW",
+    "property": "create"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW",
+    "property": "deleteById"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW",
+    "property": "login"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW",
+    "property": "logout"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW",
+    "property": "findById"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW",
+    "property": "updateAttributes"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW",
+    "property": "confirm"
+  }, {
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW",
+    "property": "resetPassword",
+    "accessType": "EXECUTE"
+  }],
+  "methods": {}
+}

@@ -1,0 +1,31 @@
+{
+  "pgDS": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "mydb",
+    "username": "postgres",
+    "password": "postgres",
+    "name": "pgDS",
+    "debug": "true",
+    "connector": "postgresql"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "my.email.id@gmail.com",
+          "pass": "pass123"
+        }
+      }
+    ]
+  }
+}
